@@ -41,7 +41,7 @@ app.get('/dbtest', (req, res) => {
 });
 
 // 启动服务器
-const PORT = process.env.SERVER_PORT || 3000;
+const PORT = 8080;
 
 // OpenAPI UI
 app.use(
@@ -49,13 +49,13 @@ app.use(
     swaggerUi.serve,
     swaggerUi.setup(null, {
         swaggerOptions: {
-            url: `http://localhost:${PORT}/api-docs`,
+            url: `http://0.0.0.0:${PORT}/api-docs`,
         },
     })
 );
 
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server is running on http://0.0.0.0:${PORT}`);
 });
 
 // OpenAPI routes
